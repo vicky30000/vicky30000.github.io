@@ -518,8 +518,8 @@
   const WORDS = {"ugc-multishot":"Consistent","ugc-product-application":"Skincare","ugc-5in1-v1":"Origins","ugc-5in1-v4":"Origins","ugc-influencer":"Influencer","ugc-hair-specialist":"Haircare","ugc-realism-voice":"Realism","ugc-voiceover":"Voice","ugc-story-characters":"Story","realestate":"Property","airbnb":"Airbnb","story":"Story","bugzy-vertical":"Bugzy","trending":"Trending","paper":"Paper"};
 
   class Carousel {
-    constructor(root, keys){
-      this.root = root; this.items = keys.map(k => byK[k]); this.i = 0;
+    constructor(root, keys, startKey){
+      this.root = root; this.items = keys.map(k => byK[k]); this.i = Math.max(0, keys.indexOf(startKey));
       this.track = root.querySelector(".car-track"); this.dots = root.querySelector(".car-dots");
       this.countB = root.querySelector(".car-count b"); this.countN = root.querySelector(".car-count span");
       this.countN.textContent = String(this.items.length).padStart(2,"0");
@@ -561,8 +561,8 @@
       this.countB.textContent = String(this.i + 1).padStart(2,"0");
     }
   }
-  const carU = new Carousel(document.getElementById("carUgc"), ORDER_UGC);
-  const carA = new Carousel(document.getElementById("carAe"), ORDER_AE);
+  const carU = new Carousel(document.getElementById("carUgc"), ORDER_UGC, "ugc-multishot");
+  const carA = new Carousel(document.getElementById("carAe"), ORDER_AE, "bugzy-vertical");
   addEventListener("resize", () => { carU.update(); carA.update(); });
 
   // filters
