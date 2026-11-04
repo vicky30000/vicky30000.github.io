@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23E5173F'/%3E%3Cpath d='M12 9l11 7-11 7z' fill='%23fff'/%3E%3C/svg%3E">
 <style>
   :root{
-    --black:#1A070C; --wine:#4A0B1B; --wine2:#7A1029; --red:#FF2D55; --red2:#FF6B85;
+    --black:#3A0B17; --wine:#4A0B1B; --wine2:#7A1029; --red:#FF2D55; --red2:#FF6B85;
     --white:#FFFFFF; --muted:#F0D9DE; --line:rgba(255,255,255,.18); --card:#2A0B13;
     --g:clamp(16px,4vw,48px); --r:14px;
     --font:"Archivo","Archivo Narrow","Arial Narrow","DejaVu Sans Condensed",system-ui,sans-serif;
@@ -39,7 +39,7 @@
   .pill.dark:hover{background:rgba(255,255,255,.14)}
 
   /* nav */
-  .nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px var(--g);background:linear-gradient(180deg,rgba(26,7,12,.96),rgba(26,7,12,.75) 80%,transparent);backdrop-filter:blur(8px)}
+  .nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:16px var(--g);background:linear-gradient(180deg,rgba(58,11,23,.97),rgba(58,11,23,.8) 80%,transparent);backdrop-filter:blur(8px)}
   .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:14px}
   .logo b{width:26px;height:26px;border-radius:50%;background:var(--red);display:grid;place-items:center}
   .logo b svg{width:10px;height:10px;fill:#fff;margin-left:2px}
@@ -75,7 +75,7 @@
   @keyframes smk2{to{transform:translate(-5%,4%) scale(1.12) rotate(-8deg)}}
   .me{position:absolute;left:50%;bottom:0;height:88%;width:auto;max-width:none;transform:translateX(-50%);z-index:1;filter:drop-shadow(0 24px 50px rgba(40,0,10,.35)) contrast(1.04) saturate(1.06);-webkit-mask-image:linear-gradient(to bottom,#000 80%,rgba(0,0,0,.75) 100%);mask-image:linear-gradient(to bottom,#000 80%,rgba(0,0,0,.75) 100%)}
   .intro{position:absolute;top:clamp(28px,4vw,52px);left:clamp(24px,4vw,56px);z-index:3;font-size:clamp(18px,1.9vw,28px);line-height:1;font-variation-settings:"wdth" 70,"wght" 850;text-transform:uppercase;letter-spacing:.005em}
-  .intro em{font-style:normal;color:var(--red2)}
+  .intro em{font-style:normal;color:#B3173B;background:#fff;padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .name{position:absolute;left:50%;bottom:clamp(10px,2.4vw,34px);transform:translateX(-50%);z-index:2;text-align:left;text-transform:uppercase;pointer-events:none;line-height:.8}
   .name .first{display:block;font-size:clamp(30px,4.4vw,66px);font-variation-settings:"wdth" 62,"wght" 850;letter-spacing:.005em;margin:0 0 .06em .04em;text-shadow:0 2px 0 rgba(60,4,20,.55),0 4px 18px rgba(60,4,20,.6)}
   .name .last{display:block;font-size:clamp(120px,21vw,320px);font-variation-settings:"wdth" 62,"wght" 900;letter-spacing:-.01em;text-shadow:0 3px 0 rgba(60,4,20,.5),0 10px 40px rgba(60,4,20,.55)}
@@ -156,7 +156,7 @@
   .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
 
   /* about */
-  .about{background:linear-gradient(180deg,var(--black),#3A0A16 50%,var(--black))}
+  .about{background:linear-gradient(180deg,var(--black),#561024 50%,var(--black))}
   .about-in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:center}
   .photo{position:relative;border-radius:var(--r);overflow:visible}
   .photo img{width:100%;height:auto;border-radius:var(--r);border:1px solid var(--line);filter:none}
@@ -191,7 +191,7 @@
   @media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.grid .card.wide{grid-column:span 2}}
 
   /* services */
-  .services{background:#2A0912}
+  .services{background:#4D0E1F}
   .svc{border-top:1px solid var(--line)}
   .svc .row{display:grid;grid-template-columns:70px 1.2fr 1fr auto;gap:20px;align-items:center;padding:26px 0;border-bottom:1px solid var(--line)}
   .svc .n{font-size:13px;color:var(--muted);font-weight:600}
@@ -203,7 +203,7 @@
 
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
-  .stat{border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:linear-gradient(160deg,#5A0E1E,#2A0912)}
+  .stat{border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:linear-gradient(160deg,#7A1029,#4D0E1F)}
   .stat b{display:block;font-size:clamp(36px,4.5vw,56px);font-variation-settings:"wdth" 80,"wght" 800;line-height:1}
   .stat b i{font-style:normal;color:var(--red2)}
   .stat span{display:block;margin-top:8px;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
@@ -432,7 +432,6 @@
   <p class="sub" style="margin-top:14px">Open to full-time and freelance editing roles. Send a brief or just say hi.</p>
   <div class="cta contact-cta">
     <a class="pill" href="mailto:muhammadwaqasasif994@gmail.com?subject=Video%20editing%20project&body=Hi%20Waqas%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.%0A%0A">
-      <i class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></i>
       Send an email
     </a>
   </div>
