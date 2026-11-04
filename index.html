@@ -78,12 +78,18 @@
   .badges{display:flex;gap:10px;flex-wrap:wrap}
   .badge{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.25)}
   .badge small{display:block;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted);font-size:11px}
-  .hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 clamp(24px,5vw,72px) clamp(24px,5vw,72px)}
+  .hero-rows{display:grid;gap:26px;padding:0 clamp(24px,5vw,72px) clamp(24px,5vw,72px)}
+  .row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .row-head .tag{color:var(--white)}
+  .row-head a{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  .row-head a:hover{color:var(--white)}
+  .hero-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   @media(max-width:860px){
     .hero-in{grid-template-columns:1fr;gap:28px}
-    .hero-cards{grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 16px}
+    .hero-rows{padding:0 16px 16px;gap:20px}
+    .hero-cards{gap:8px}
   }
-  @media(max-width:560px){.hero-cards{grid-template-columns:1fr 1fr}.hero-cards .card:nth-child(3){display:none}}
+  @media(max-width:560px){.hero-cards{grid-template-columns:1fr 1fr}}
 
   /* cards */
   .card{position:relative;border-radius:12px;overflow:hidden;background:var(--card);aspect-ratio:9/13;cursor:pointer;border:1px solid var(--line);text-align:left;padding:0;width:100%;display:block}
@@ -229,7 +235,16 @@
       </div>
     </aside>
   </div>
-  <div class="hero-cards" id="heroCards"></div>
+  <div class="hero-rows">
+    <div class="hero-row">
+      <div class="row-head"><span class="tag">AI UGC ads</span><a href="#work" data-jump="ugc">See all</a></div>
+      <div class="hero-cards" id="heroUgc"></div>
+    </div>
+    <div class="hero-row">
+      <div class="row-head"><span class="tag">After Effects edits</span><a href="#work" data-jump="motion">See all</a></div>
+      <div class="hero-cards" id="heroAe"></div>
+    </div>
+  </div>
 </section>
 
 <section class="about" id="about">
@@ -348,6 +363,7 @@
     {k:"trending",                t:"Trending-format edit",          s:"After Effects",             f:"motion", r:"9:16", c:["#8a2240","#1a060c"]},
     {k:"realestate",              t:"Real estate",                   s:"After Effects",             f:"motion", r:"9:16", c:["#1f0050","#0b0608"]},
     {k:"airbnb",                  t:"Airbnb listing",                s:"After Effects",             f:"motion", r:"9:16", c:["#c22a4c","#2a070f"]},
+    {k:"bugzy-vertical",          t:"Bugzy.io vertical cut",         s:"After Effects · SaaS",      f:"motion", r:"9:16", c:["#2d1f6a","#0b0608"]},
     {k:"paper",                   t:"Paper-style edit",              s:"After Effects",             f:"motion", r:"9:16", c:["#6b1020","#160a0e"]},
     {k:"orbit",                   t:"Orbit Trading promo",           s:"SaaS promo",                f:"saas",   r:"16:9", c:["#0f3f30","#0b0608"], wide:true},
     {k:"bugzy",                   t:"Bugzy.io walkthrough",          s:"SaaS walkthrough",          f:"saas",   r:"16:9", c:["#2d1f6a","#0b0608"], wide:true},
@@ -379,9 +395,15 @@
 
   const grid = document.getElementById("grid");
   CLIPS.forEach(c => grid.appendChild(card(c)));
-  grid.insertAdjacentHTML("beforeend", `<a class="card wide more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work<br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
-  const hero = document.getElementById("heroCards");
-  CLIPS.filter(c => c.f === "ugc").slice(0,3).forEach(c => hero.appendChild(card(c, false)));
+  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work<br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
+  const byK = Object.fromEntries(CLIPS.map(c => [c.k, c]));
+  const HERO_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4"];
+  const HERO_AE  = ["realestate","airbnb","story","bugzy-vertical"];
+  HERO_UGC.forEach(k => document.getElementById("heroUgc").appendChild(card(byK[k], false)));
+  HERO_AE.forEach(k => document.getElementById("heroAe").appendChild(card(byK[k], false)));
+  document.querySelectorAll("[data-jump]").forEach(a => a.addEventListener("click", () => {
+    const b = document.querySelector(`.chipb[data-f="${a.dataset.jump}"]`); b && b.click();
+  }));
 
   // filters
   const chips = [...document.querySelectorAll(".chipb")];
