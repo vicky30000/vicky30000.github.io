@@ -200,7 +200,7 @@
 
   /* pricing */
   .pricing{background:var(--paper)}
-  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
   .plan{display:flex;flex-direction:column;gap:16px;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;background:var(--bg)}
   .plan.hot{background:var(--blush);border-color:rgba(229,23,63,.35)}
   .plan h3{font-size:clamp(22px,2.2vw,28px);color:var(--ink)}
@@ -216,7 +216,8 @@
   .trial .pill{background:#fff;color:var(--red-d);border-color:#fff}
   .trial .pill:hover{background:var(--red);color:#fff;border-color:var(--red)}
   .fine{margin-top:16px;color:var(--ink2);font-size:14px}
-  @media(max-width:900px){.plans{grid-template-columns:1fr}}
+  @media(max-width:1100px){.plans{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.plans{grid-template-columns:1fr}}
 
   /* work grid */
   #work{background:var(--bg)}
@@ -491,6 +492,12 @@
         <p>Influencer-style product ads generated with custom ComfyUI workflows, with n8n pipelines to batch out variations fast.</p>
         <div class="tools"><span>ComfyUI</span><span>n8n</span><span>AI video gen</span></div>
       </div>
+      <div class="row">
+        <span class="n">04</span>
+        <h3 class="d">Custom workflows</h3>
+        <p>Custom ComfyUI and n8n workflows built for your team, from AI ad generation to automated content pipelines. Project-based.</p>
+        <div class="tools"><span>ComfyUI</span><span>n8n</span></div>
+      </div>
     </div>
 
     <div class="stats">
@@ -519,7 +526,7 @@
   <div class="wrap">
     <span class="tag">Pricing</span>
     <h2 class="d" style="margin-top:12px">Starter <br>packages</h2>
-    <p class="sub">Clear starting prices in USD. The final quote depends on length, footage and how many variations you need.</p>
+    <p class="sub">Clear starting prices in USD. The final quote depends on length, footage and how many variations you need. Custom workflows are quoted per project.</p>
     <div class="plans">
       <div class="plan hot">
         <h3 class="d">AI UGC ad</h3>
@@ -538,6 +545,12 @@
         <p class="price">from<b>$40</b>/ video</p>
         <ul><li>After Effects titles and product callouts</li><li>SaaS promos and walkthroughs</li><li>Real estate and listing edits</li></ul>
         <a class="pill dark" data-quote="Motion graphics" href="#contact">Get a quote</a>
+      </div>
+      <div class="plan">
+        <h3 class="d">Custom workflows</h3>
+        <p class="price"><b>Custom</b>/ project</p>
+        <ul><li>ComfyUI workflows for AI image, video and UGC generation</li><li>n8n automations, like batch ad variations and content pipelines</li><li>Scoped and quoted per project</li></ul>
+        <a class="pill dark" data-quote="Custom ComfyUI / n8n workflow" href="#contact">Get a quote</a>
       </div>
     </div>
     <div class="trial">
