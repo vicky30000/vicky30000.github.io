@@ -180,6 +180,13 @@
   .contact .big{display:inline-block;margin-top:26px;font-size:clamp(18px,2.6vw,30px);font-weight:700;border-bottom:2px solid var(--red2);padding-bottom:4px;word-break:break-all}
   .contact .row{display:flex;gap:14px 30px;flex-wrap:wrap;margin-top:28px;color:var(--muted);font-size:14px}
   .contact .row a{color:var(--white);border-bottom:1px solid var(--line)}
+  .contact-cta{margin-top:30px}
+  .contact-cta .pill{font-size:16px;padding:14px 22px 14px 18px}
+  .pill .ico{width:22px;height:22px;display:grid;place-items:center;background:none}
+  .pill .ico svg{width:20px;height:20px;fill:currentColor}
+  .pill.wa{background:#25D366;color:#062b16;border:0}
+  .pill.wa:hover{background:#3BE37A}
+  .pill.dark .ico svg{fill:none}
   footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0 var(--g) 36px;font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 
   /* lightbox */
@@ -204,7 +211,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="pill" href="#contact">Hire me <i><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg></i></a>
+  <a class="pill" href="https://wa.me/923134390172?text=Hi%20Waqas%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">Hire me <i><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg></i></a>
 </header>
 
 <main id="top">
@@ -325,12 +332,20 @@
 <section class="contact" id="contact" style="margin-top:var(--g)">
   <span class="tag">Get in touch</span>
   <h2 class="d" style="margin-top:14px">Let's make<br>something</h2>
-  <a class="big" href="mailto:muhammadwaqasasif994@gmail.com">muhammadwaqasasif994@gmail.com</a>
+  <p class="sub" style="margin-top:14px">Open to full-time and freelance editing roles. Send a brief or just say hi.</p>
+  <div class="cta contact-cta">
+    <a class="pill wa" href="https://wa.me/923134390172?text=Hi%20Waqas%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">
+      <i class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3.9A11.3 11.3 0 0 0 1.7 17.5L0 24l6.7-1.7A11.3 11.3 0 0 0 20 3.9zm-8 17.6a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-4 1 1.1-3.9-.2-.3A9.4 9.4 0 1 1 12 21.5zm5.2-7c-.3-.1-1.7-.8-1.9-.9s-.5-.1-.7.1-.8.9-1 1.1-.3.2-.6.1a7.7 7.7 0 0 1-3.8-3.3c-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.1 4.5c1.9.8 2.6.9 3.6.7a3 3 0 0 0 2-1.4 2.4 2.4 0 0 0 .2-1.4c-.1-.1-.3-.2-.6-.3z"/></svg></i>
+      Message on WhatsApp
+    </a>
+    <a class="pill dark" href="mailto:muhammadwaqasasif994@gmail.com?subject=Video%20editing%20project&body=Hi%20Waqas%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.%0A%0A">
+      <i class="ico"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></i>
+      Send an email
+    </a>
+  </div>
   <div class="row">
-    <span>WhatsApp <a href="tel:+923134390172">+92 313 4390172</a></span>
     <span><a href="Muhammad_Waqas_Asif_Resume.pdf" download>Résumé (PDF)</a></span>
     <span><a href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener">Full portfolio on Drive</a></span>
-    <span>Open to full-time &amp; freelance</span>
   </div>
 </section>
 </main>
