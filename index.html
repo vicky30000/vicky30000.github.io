@@ -57,18 +57,29 @@
   .glow i:nth-child(3){right:6%;top:26%;width:44%;height:70%;background:radial-gradient(closest-side,rgba(255,140,165,.55),rgba(255,140,165,0));animation:smk1 19s ease-in-out infinite alternate-reverse}
   @keyframes smk1{to{transform:translate(4%,-5%) scale(1.08) rotate(6deg)}}
   @keyframes smk2{to{transform:translate(-5%,4%) scale(1.12) rotate(-8deg)}}
-  .me{position:absolute;left:50%;bottom:0;height:88%;width:auto;max-width:none;transform:translateX(-50%);z-index:1;filter:drop-shadow(0 24px 40px rgba(150,20,50,.22))}
+  .me{position:absolute;left:27%;bottom:0;height:80%;width:auto;max-width:none;transform:translateX(-50%);z-index:1;filter:drop-shadow(0 24px 40px rgba(150,20,50,.22))}
   .intro{position:absolute;top:clamp(28px,4vw,52px);left:clamp(24px,4vw,56px);z-index:3;font-size:clamp(18px,1.9vw,28px);line-height:1.02;font-variation-settings:"wdth" 70,"wght" 850;text-transform:uppercase;letter-spacing:.005em;color:var(--ink)}
   .intro em{font-style:normal;color:#fff;background:var(--red);padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-  .name{position:absolute;left:50%;bottom:clamp(10px,2.4vw,34px);transform:translateX(-50%);z-index:2;text-align:left;text-transform:uppercase;pointer-events:none;line-height:.8}
+  .name{position:absolute;left:27%;bottom:clamp(10px,2.4vw,34px);transform:translateX(-50%);z-index:2;text-align:left;text-transform:uppercase;pointer-events:none;line-height:.8}
   .name .first{display:block;font-size:clamp(28px,3.8vw,56px);font-variation-settings:"wdth" 62,"wght" 850;letter-spacing:.005em;margin:0 0 .06em .04em;color:var(--ink);text-shadow:0 2px 14px rgba(255,255,255,.7)}
-  .name .last{display:block;font-size:max(110px,min(18vw,calc(var(--H) * .46 - 70px),280px));font-variation-settings:"wdth" 62,"wght" 900;letter-spacing:-.01em;color:var(--red);text-shadow:0 6px 30px rgba(255,255,255,.45)}
+  .name .last{display:block;font-size:max(96px,min(14vw,calc(var(--H) * .38 - 50px),240px));font-variation-settings:"wdth" 62,"wght" 900;letter-spacing:-.01em;color:var(--red);text-shadow:0 6px 30px rgba(255,255,255,.45)}
   .hero .cta{margin-top:clamp(22px,3vw,34px);display:flex;gap:12px;flex-wrap:wrap}
   .hero .cta .sm{display:none}
   .script{position:absolute;top:clamp(22px,3.4vw,46px);right:clamp(24px,4vw,56px);z-index:3;font-family:"Caveat",cursive;font-weight:700;font-size:clamp(34px,3.4vw,52px);line-height:.88;color:var(--red);transform:rotate(-5deg);transform-origin:right top;text-align:left;pointer-events:none}
   .script span{display:block;margin-left:.9em}
-  .hero .acts{position:absolute;top:calc(clamp(22px,3.4vw,46px) + clamp(34px,3.4vw,52px) * 1.8 + 30px);right:clamp(24px,4vw,56px);z-index:3;margin:0;flex-direction:column;align-items:stretch;width:clamp(190px,16vw,220px)}
   .hero .acts .pill{justify-content:center}
+  /* right column: autoplaying ad loops + buttons */
+  .side{position:absolute;z-index:3;right:clamp(24px,4vw,56px);top:calc(clamp(22px,3.4vw,46px) + clamp(34px,3.4vw,52px) * 1.75 + 24px);width:calc(47% - clamp(24px,4vw,56px));display:flex;flex-direction:column;align-items:center;gap:16px;container-type:inline-size}
+  .reel{display:flex;gap:12px;justify-content:center}
+  .rc{position:relative;flex:none;height:min(calc(var(--H) - 290px),calc((100cqw - 12px) / 2 * 16 / 9));aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#2A0712;border:3px solid #fff;box-shadow:0 22px 50px rgba(150,20,50,.28);padding:0;cursor:pointer;transition:transform .25s}
+  .rc:hover{transform:translateY(-4px)}
+  .rc video,.rc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .rc-l{position:absolute;left:8px;right:8px;bottom:8px;padding:7px 10px;border-radius:9px;background:rgba(42,7,18,.66);backdrop-filter:blur(6px);color:#fff;text-align:left;line-height:1.2}
+  .rc-l b{display:block;font-size:13px;font-weight:800}
+  .rc-l small{display:block;font-size:11px;font-weight:600;color:rgba(255,255,255,.88);margin-top:2px}
+  .side .acts{margin:0;justify-content:center;gap:10px}
+  .proof{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2);text-align:center}
+  .proof b{color:var(--red);font-weight:800}
 
   /* hero carousels */
   .hero-rows{display:grid;gap:clamp(28px,4vw,48px);padding:clamp(28px,4vw,48px) clamp(16px,4vw,64px) clamp(28px,5vw,64px);border-top:1px solid rgba(229,23,63,.14);background:linear-gradient(180deg,#FFE3EA,#FFF3F6)}
@@ -102,9 +113,15 @@
     .script{top:26px;right:22px;font-size:clamp(30px,5vw,40px)}
     .intro{order:1}
     .glow{top:90px;bottom:auto;height:72%;width:120%}
-    .me{position:relative;left:auto;bottom:auto;transform:none;order:2;height:auto;width:min(100%,560px);align-self:center;margin-top:10px}
-    .name{position:relative;order:3;left:auto;bottom:auto;transform:none;align-self:center;margin-top:-26%;padding-bottom:4px}
-    .hero .acts{order:4;width:auto;flex-direction:row;flex-wrap:wrap;margin:18px 0 26px}
+    .side{display:contents}
+    .reel{order:2;width:100%;max-width:520px;align-self:center;margin-top:20px;gap:10px}
+    .rc{flex:1 1 0;min-width:0;height:auto}
+    .me{position:relative;left:auto;bottom:auto;transform:none;order:3;height:auto;width:min(86%,480px);align-self:center;margin-top:18px}
+    .name{position:relative;order:4;left:auto;bottom:auto;transform:none;align-self:center;margin-top:-15.5vw;padding-bottom:4px}
+    .name .first{font-size:clamp(26px,4.2vw,36px)}
+    .name .last{font-size:clamp(96px,15vw,128px)}
+    .hero .acts{order:5;width:auto;flex-direction:row;flex-wrap:wrap;margin:18px 0 12px}
+    .proof{order:6;margin-bottom:26px}
     .hero-rows{padding:24px 12px 20px;gap:28px}
     .car{--w:clamp(170px,46vw,230px)}
     .car-head{max-width:none}
@@ -133,8 +150,8 @@
 
   /* about + editing timeline */
   .about{background:var(--paper)}
-  .about-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,80px);align-items:center}
-  .tlx-wrap{position:relative;padding:22px 26px}
+  .about-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,5vw,80px);align-items:center}
+  .tlx-wrap{position:relative;padding:22px 26px;max-width:460px;width:100%;justify-self:center}
   .tlx{position:relative;aspect-ratio:16/11;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px rgba(150,20,50,.16);background-color:#fff;background-image:conic-gradient(#F4E7EA 25%,#fff 0 50%,#F4E7EA 0 75%,#fff 0);background-size:22px 22px}
   .tlx-bar{position:absolute;left:0;right:0;top:0;height:13%;display:flex;align-items:center;justify-content:space-between;padding:0 15% 0 13%;background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);font-size:clamp(10px,1vw,13px);font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}
   .tlx-bar span:first-child{display:flex;gap:6px}
@@ -166,7 +183,40 @@
   .bio p.big em{font-style:normal;color:var(--red)}
   .bio .txt{color:var(--ink2);margin-top:18px;max-width:52ch;font-size:16px}
   .bio .cta{margin-top:26px}
-  @media(max-width:860px){.about-in{grid-template-columns:1fr}.tlx-wrap{max-width:560px;margin:0 auto;width:100%}}
+  @media(max-width:860px){.about-in{grid-template-columns:1fr;gap:28px}.tlx-wrap{max-width:380px;margin:0 auto;order:2}}
+
+  /* logo strip under hero */
+  .logos{margin-top:var(--g);text-align:center}
+  .logos .tag{margin-bottom:14px}
+
+  /* process */
+  .process{background:var(--bg)}
+  .steps{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
+  .steps li{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px}
+  .steps .n{font-size:13px;font-weight:800;color:var(--red)}
+  .steps h3{font-size:clamp(22px,2.2vw,28px);margin:10px 0 8px;color:var(--ink)}
+  .steps p{color:var(--ink2);font-size:15px}
+  @media(max-width:960px){.steps{grid-template-columns:1fr 1fr}}
+
+  /* pricing */
+  .pricing{background:var(--paper)}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .plan{display:flex;flex-direction:column;gap:16px;border:1px solid var(--line);border-radius:var(--r);padding:28px 24px;background:var(--bg)}
+  .plan.hot{background:var(--blush);border-color:rgba(229,23,63,.35)}
+  .plan h3{font-size:clamp(22px,2.2vw,28px);color:var(--ink)}
+  .plan .price{font-size:14px;font-weight:700;color:var(--ink2)}
+  .plan .price b{font-size:clamp(42px,4.4vw,58px);font-variation-settings:"wdth" 80,"wght" 800;line-height:1;color:var(--ink);margin:0 4px}
+  .plan ul{list-style:none;display:grid;gap:8px;color:var(--ink2);font-size:15px;flex:1;align-content:start}
+  .plan li{padding-left:16px;position:relative}
+  .plan li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--red)}
+  .plan .pill{align-self:flex-start}
+  .trial{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:16px 24px;flex-wrap:wrap;border-radius:var(--r);padding:22px 26px;background:var(--ink);color:#fff}
+  .trial p{font-size:clamp(17px,1.7vw,20px);font-weight:600;max-width:60ch}
+  .trial p b{color:#FF8FA3}
+  .trial .pill{background:#fff;color:var(--red-d);border-color:#fff}
+  .trial .pill:hover{background:var(--red);color:#fff;border-color:var(--red)}
+  .fine{margin-top:16px;color:var(--ink2);font-size:14px}
+  @media(max-width:900px){.plans{grid-template-columns:1fr}}
 
   /* work grid */
   #work{background:var(--bg)}
@@ -238,8 +288,11 @@
     .intro{font-size:22px}
     .script{top:20px;right:16px;font-size:28px}
     .name .first{font-size:clamp(24px,8vw,36px)}
+    .name{margin-top:-30vw}
     .name .last{font-size:clamp(96px,31vw,150px)}
-    .hero .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 22px}
+    .rc-l .snd{display:none}
+    .rc-l{left:6px;right:6px;bottom:6px;padding:6px 8px}
+    .hero .acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 12px}
     .hero .acts .pill{padding:13px 14px;font-size:14px}
     .hero .acts .pill:first-child{grid-column:1/-1}
     .hero .cta .lg{display:none}
@@ -267,7 +320,11 @@
     .grid .card .lbl{padding:30px 10px 10px;gap:6px}
     .grid .card .lbl b{font-size:12.5px;line-height:1.2}
     .grid .card .lbl .txt small{font-size:11px}
-    .grid .card.more{grid-column:auto;aspect-ratio:9/13;padding:14px}
+    .grid .card.more{grid-column:1/-1;aspect-ratio:16/9;padding:14px}
+    .steps{grid-template-columns:1fr}
+    .plan{padding:24px 20px}
+    .trial{padding:20px}
+    .trial .pill{width:100%}
     .grid .card.more b{font-size:19px}
     .grid .card.more small{font-size:11px}
     .grid .card.more .pill{font-size:12px;padding:8px 14px;margin-top:12px}
@@ -285,7 +342,7 @@
     .contact-cta .pill{width:100%}
     footer{flex-direction:column;gap:6px;padding:0 16px 28px}
   }
-  @media(prefers-reduced-motion:reduce){.glow i,.marq .t,.tlx-head,.trk .trim,.app{animation:none}.car-track .card{transition:none}html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){.rc{transition:none}.glow i,.marq .t,.tlx-head,.trk .trim,.app{animation:none}.car-track .card{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -295,10 +352,11 @@
   <ul>
     <li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="pill" href="#contact">Hire me</a>
+  <a class="pill" href="#contact">Book a project</a>
 </header>
 
 <main id="top">
@@ -309,10 +367,23 @@
     <img class="me" src="img/waqas-hero.webp" alt="Muhammad Waqas Asif" width="1000" height="940" fetchpriority="high">
     <p class="intro">Short-form ads <br>that stop <br><em>the scroll.</em></p>
     <p class="script">Editorial<span>Portfolio</span></p>
-    <div class="cta acts">
-      <a class="pill" href="#work">See the work</a>
-      <a class="pill dark" href="#contact">Contact me</a>
-      <a class="pill dark" href="Muhammad_Waqas_Asif_Resume.pdf" download><span class="lg">Download résumé</span><span class="sm">Résumé (PDF)</span></a>
+    <div class="side">
+      <div class="reel">
+        <button class="rc" type="button" data-k="ugc-multishot" aria-label="Play the wellness brand AI UGC ad with sound">
+          <video src="loops/ugc-multishot.mp4" poster="loops/ugc-multishot.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <span class="rc-l"><b>Wellness brand</b><small>AI UGC ad<span class="snd"> · play with sound</span></small></span>
+        </button>
+        <button class="rc" type="button" data-k="ugc-product-application" aria-label="Play the skincare brand AI UGC ad with sound">
+          <video src="loops/ugc-product-application.mp4" poster="loops/ugc-product-application.jpg" autoplay muted loop playsinline preload="auto"></video>
+          <span class="rc-l"><b>Skincare brand</b><small>AI UGC ad<span class="snd"> · play with sound</span></small></span>
+        </button>
+      </div>
+      <div class="cta acts">
+        <a class="pill" href="#contact">Book a project</a>
+        <a class="pill dark" href="#work">See the work</a>
+        <a class="pill dark" href="Muhammad_Waqas_Asif_Resume.pdf" download><span class="lg">Résumé (PDF)</span><span class="sm">Résumé (PDF)</span></a>
+      </div>
+      <p class="proof"><b>100k–800k</b> views per ad · best <b>1.5M</b></p>
     </div>
     <h1 class="name"><span class="first">Muhammad</span><span class="last">Waqas</span></h1>
   </div>
@@ -335,6 +406,31 @@
       </div>
       <div class="car-dots" role="tablist"></div>
     </div>
+  </div>
+</section>
+
+<div class="logos">
+  <span class="tag">Brands &amp; agencies I've edited for</span>
+  <div class="marq" aria-label="Brands">
+  <div class="t" id="marq"></div>
+</div>
+</div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag">Selected work</span>
+        <h2 class="d" style="margin-top:12px">Stories I've <br>brought to life</h2>
+      </div>
+      <div class="filters" role="group" aria-label="Filter">
+        <button class="chipb" aria-pressed="true" data-f="all">All</button>
+        <button class="chipb" aria-pressed="false" data-f="ugc">AI UGC ads</button>
+        <button class="chipb" aria-pressed="false" data-f="motion">Motion edits</button>
+        <button class="chipb" aria-pressed="false" data-f="saas">SaaS promos</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
   </div>
 </section>
 
@@ -366,28 +462,9 @@
         <span class="tag">About me</span>
         <p class="big">Great editing isn't cutting clips together. It's <em>rhythm, emotion, and clarity</em> that make people stop scrolling.</p>
         <p class="txt">I'm Waqas — a video editor working remotely with DTC brands and agencies since 2024. I cut short-form ads in Premiere Pro, build motion in After Effects, and generate AI UGC with custom ComfyUI workflows so one concept can become a dozen variations.</p>
-        <p class="txt">Open to full-time and freelance editing roles.</p>
-        <div class="cta"><a class="pill" href="#contact">Work with me</a></div>
+        <div class="cta"><a class="pill" href="#contact">Book a project</a></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="work">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <span class="tag">Selected work</span>
-        <h2 class="d" style="margin-top:12px">Stories I've <br>brought to life</h2>
-      </div>
-      <div class="filters" role="group" aria-label="Filter">
-        <button class="chipb" aria-pressed="true" data-f="all">All</button>
-        <button class="chipb" aria-pressed="false" data-f="ugc">AI UGC ads</button>
-        <button class="chipb" aria-pressed="false" data-f="motion">Motion edits</button>
-        <button class="chipb" aria-pressed="false" data-f="saas">SaaS promos</button>
-      </div>
-    </div>
-    <div class="grid" id="grid"></div>
   </div>
 </section>
 
@@ -417,28 +494,69 @@
     </div>
 
     <div class="stats">
+      <div class="stat"><b>1.5<i>M</i></b><span>Views on my best ad</span></div>
+      <div class="stat"><b>100k<i>+</i></b><span>Typical views per ad</span></div>
       <div class="stat"><b>7<i>+</i></b><span>Brands served</span></div>
       <div class="stat"><b>3</b><span>Agencies worked with</span></div>
-      <div class="stat"><b>3</b><span>Formats: 9:16 · 1:1 · 16:9</span></div>
-      <div class="stat"><b>2024</b><span>Editing since</span></div>
     </div>
   </div>
 </section>
 
-<div class="marq" aria-label="Brands">
-  <div class="t" id="marq"></div>
-</div>
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="tag">How it works</span>
+    <h2 class="d" style="margin-top:12px">From brief <br>to final cut</h2>
+    <ol class="steps">
+      <li><span class="n">01</span><h3 class="d">Brief</h3><p>Send your product, a few reference ads, and where the video will run.</p></li>
+      <li><span class="n">02</span><h3 class="d">First cut</h3><p>I edit the first version and send you a preview link, usually within 2&ndash;3 days.</p></li>
+      <li><span class="n">03</span><h3 class="d">Revisions</h3><p>You send notes and I tighten the cut. Two revision rounds are included.</p></li>
+      <li><span class="n">04</span><h3 class="d">Delivery</h3><p>Final files in 9:16, 1:1 or 16:9, ready to upload or run as ads.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <span class="tag">Pricing</span>
+    <h2 class="d" style="margin-top:12px">Starter <br>packages</h2>
+    <p class="sub">Clear starting prices in USD. The final quote depends on length, footage and how many variations you need.</p>
+    <div class="plans">
+      <div class="plan hot">
+        <h3 class="d">AI UGC ad</h3>
+        <p class="price">from<b>$35</b>/ ad</p>
+        <ul><li>AI influencer generated with custom ComfyUI workflows</li><li>Hook-first script, voice and lip-sync</li><li>Extra variations priced per ad</li></ul>
+        <a class="pill" data-quote="AI UGC ad" href="#contact">Get a quote</a>
+      </div>
+      <div class="plan">
+        <h3 class="d">Short-form edit</h3>
+        <p class="price">from<b>$40</b>/ video</p>
+        <ul><li>Your footage cut for Reels, TikTok and paid social</li><li>Edited for retention, hook first</li><li>Delivered in 9:16, 1:1 or 16:9</li></ul>
+        <a class="pill dark" data-quote="Short-form edit" href="#contact">Get a quote</a>
+      </div>
+      <div class="plan">
+        <h3 class="d">Motion graphics</h3>
+        <p class="price">from<b>$40</b>/ video</p>
+        <ul><li>After Effects titles and product callouts</li><li>SaaS promos and walkthroughs</li><li>Real estate and listing edits</li></ul>
+        <a class="pill dark" data-quote="Motion graphics" href="#contact">Get a quote</a>
+      </div>
+    </div>
+    <div class="trial">
+      <p>New here? Start with <b>one paid test ad at a fixed $35</b>, so you can see my work on your product before a bigger order.</p>
+      <a class="pill" data-quote="Test ad ($35)" href="#contact">Order a test ad</a>
+    </div>
+    <p class="fine">Bulk orders and monthly retainers on request.</p>
+  </div>
+</section>
 
 <section class="contact" id="contact" style="margin-top:var(--g)">
-  <span class="tag">Get in touch</span>
+  <span class="tag">Book a project</span>
   <h2 class="d" style="margin-top:14px">Let's make <br>something</h2>
-  <p class="sub" style="margin-top:14px">Open to full-time and freelance editing roles. Send a brief or just say hi.</p>
+  <p class="sub" style="margin-top:14px">Send a short brief and I'll come back with a quote and timeline. Also open to full-time editing roles.</p>
   <div class="cta contact-cta">
-    <a class="pill" href="mailto:muhammadwaqasasif994@gmail.com?subject=Video%20editing%20project&body=Hi%20Waqas%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20project.%0A%0A">
-      Send an email
-    </a>
+    <a class="pill" data-quote="Video project" href="mailto:muhammadwaqasasif994@gmail.com">Get a quote</a>
   </div>
   <div class="row">
+    <span><a href="mailto:muhammadwaqasasif994@gmail.com">muhammadwaqasasif994@gmail.com</a></span>
     <span><a href="Muhammad_Waqas_Asif_Resume.pdf" download>Résumé (PDF)</a></span>
     <span><a href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener">Full portfolio on Drive</a></span>
   </div>
@@ -447,7 +565,7 @@
 
 <footer>
   <span>© <span id="yr"></span> Muhammad Waqas Asif</span>
-  <span>Available remotely, worldwide</span>
+  <span>Projects and full-time roles · remote, worldwide</span>
 </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
@@ -460,25 +578,20 @@
   // When videos are added, set src to "videos/<file>.mp4" (and optional poster "posters/<file>.jpg").
   // Leave src null to show a placeholder tile.
   const CLIPS = [
-    {k:"ugc-influencer",          t:"AI influencer product ad",      s:"AI UGC · multi-product",    f:"ugc",    r:"9:16", c:["#7a0f2a","#1a060c"]},
-    {k:"ugc-product-application", t:"Product application ad",        s:"AI UGC · skincare",         f:"ugc",    r:"9:16", c:["#a3153a","#2a070f"]},
-    {k:"ugc-multishot",           t:"Multi-shot, same character",    s:"AI UGC · consistency",      f:"ugc",    r:"9:16", c:["#5a0e1e","#120509"]},
-    {k:"ugc-hair-specialist",     t:"AI hair specialist",            s:"AI UGC · talking head",     f:"ugc",    r:"9:16", c:["#8a2240","#1a060c"]},
-    {k:"ugc-realism-voice",       t:"Realism with quality voice",    s:"AI UGC · voice + lipsync",  f:"ugc",    r:"9:16", c:["#6b1020","#160a0e"]},
-    {k:"ugc-story-characters",    t:"Story with multiple characters",s:"AI UGC · narrative",        f:"ugc",    r:"9:16", c:["#4a0b1b","#0b0608"]},
-    {k:"ugc-voiceover",           t:"Voice-over ad",                 s:"AI UGC",                    f:"ugc",    r:"9:16", c:["#c22a4c","#2a070f"]},
-    {k:"ugc-5in1-v1",             t:"5-in-1 AI ad, v1",              s:"AI UGC",                    f:"ugc",    r:"9:16", c:["#a3153a","#2a070f"]},
-    {k:"ugc-5in1-v4",             t:"5-in-1 AI ad, v4",              s:"AI UGC",                    f:"ugc",    r:"9:16", c:["#5a0e1e","#120509"]},
-    {k:"story",                   t:"Story-based edit",              s:"After Effects",             f:"motion", r:"9:16", c:["#3a2a8a","#140820"]},
-    {k:"trending",                t:"Trending-format edit",          s:"After Effects",             f:"motion", r:"9:16", c:["#8a2240","#1a060c"]},
-    {k:"realestate",              t:"Real estate",                   s:"After Effects",             f:"motion", r:"9:16", c:["#1f0050","#0b0608"]},
-    {k:"airbnb",                  t:"Airbnb listing",                s:"After Effects",             f:"motion", r:"9:16", c:["#c22a4c","#2a070f"]},
-    {k:"bugzy-vertical",          t:"Bugzy.io vertical cut",         s:"After Effects · SaaS",      f:"motion", r:"9:16", c:["#2d1f6a","#0b0608"]},
-    {k:"paper",                   t:"Paper-style edit",              s:"After Effects",             f:"motion", r:"9:16", c:["#6b1020","#160a0e"]},
-    {k:"orbit",                   t:"Orbit Trading promo",           s:"SaaS promo",                f:"saas",   r:"16:9", c:["#0f3f30","#0b0608"], wide:true},
-    {k:"bugzy",                   t:"Bugzy.io walkthrough",          s:"SaaS walkthrough",          f:"saas",   r:"16:9", c:["#2d1f6a","#0b0608"], wide:true},
-    {k:"imedia",                  t:"iMedia promo",                  s:"SaaS promo",                f:"saas",   r:"16:9", c:["#7a0f2a","#0b0608"], wide:true},
-    {k:"resid",                   t:"Resid promo",                   s:"SaaS promo",                f:"saas",   r:"16:9", c:["#4a0b1b","#0b0608"], wide:true},
+    // Curated 12, best first. Also in videos/ but not shown: ugc-5in1-v1, ugc-voiceover,
+    // ugc-story-characters, trending, paper, bugzy (16:9), resid. Add a line back here to show one.
+    {k:"ugc-multishot",           t:"Multi-shot, same character",    s:"Wellness brand · AI UGC ad",      f:"ugc",    r:"9:16", c:["#5a0e1e","#120509"]},
+    {k:"ugc-product-application", t:"Product application ad",        s:"Skincare brand · AI UGC ad",      f:"ugc",    r:"9:16", c:["#a3153a","#2a070f"]},
+    {k:"ugc-influencer",          t:"AI influencer ad",              s:"Supplement brand · AI UGC ad",    f:"ugc",    r:"9:16", c:["#7a0f2a","#1a060c"]},
+    {k:"bugzy-vertical",          t:"Bugzy.io vertical cut",         s:"SaaS · After Effects",            f:"motion", r:"9:16", c:["#2d1f6a","#0b0608"]},
+    {k:"ugc-5in1-v4",             t:"5-in-1 product ad",             s:"Pet food brand · AI UGC ad",      f:"ugc",    r:"9:16", c:["#5a0e1e","#120509"]},
+    {k:"ugc-hair-specialist",     t:"AI hair specialist",            s:"Haircare brand · AI UGC ad",      f:"ugc",    r:"9:16", c:["#8a2240","#1a060c"]},
+    {k:"ugc-realism-voice",       t:"Realism with voice + lip-sync", s:"Supplement brand · AI UGC ad",    f:"ugc",    r:"9:16", c:["#6b1020","#160a0e"]},
+    {k:"realestate",              t:"Property showcase",             s:"Real estate · After Effects",     f:"motion", r:"9:16", c:["#1f0050","#0b0608"]},
+    {k:"airbnb",                  t:"Airbnb listing",                s:"Short-term rental · After Effects",f:"motion", r:"9:16", c:["#c22a4c","#2a070f"]},
+    {k:"story",                   t:"Story-based edit",              s:"Social content · After Effects",  f:"motion", r:"9:16", c:["#3a2a8a","#140820"]},
+    {k:"orbit",                   t:"Orbit Trading promo",           s:"Trading platform · SaaS promo",   f:"saas",   r:"16:9", c:["#0f3f30","#0b0608"], wide:true},
+    {k:"imedia",                  t:"iMedia promo",                  s:"SaaS · product promo",            f:"saas",   r:"16:9", c:["#7a0f2a","#0b0608"], wide:true},
   ].map(c => ({...c, src:`videos/${c.k}.mp4`, poster:`posters/${c.k}.jpg`}));
   const PLAY = `<svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>`;
   const CAT = {ugc:"AI UGC", motion:"Motion", saas:"SaaS"};
@@ -500,11 +613,11 @@
 
   const grid = document.getElementById("grid");
   CLIPS.forEach(c => grid.appendChild(card(c)));
-  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work <br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder</span></span></a>`);
+  grid.insertAdjacentHTML("beforeend", `<a class="card more wide" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work <br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder</span></span></a>`);
   const byK = Object.fromEntries(CLIPS.map(c => [c.k, c]));
-  const ORDER_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4","ugc-influencer","ugc-hair-specialist","ugc-realism-voice","ugc-voiceover","ugc-story-characters"];
-  const ORDER_AE  = ["realestate","airbnb","story","bugzy-vertical","trending","paper"];
-  const WORDS = {"ugc-multishot":"Consistent","ugc-product-application":"Skincare","ugc-5in1-v1":"Origins","ugc-5in1-v4":"Origins","ugc-influencer":"Influencer","ugc-hair-specialist":"Haircare","ugc-realism-voice":"Realism","ugc-voiceover":"Voice","ugc-story-characters":"Story","realestate":"Property","airbnb":"Airbnb","story":"Story","bugzy-vertical":"Bugzy","trending":"Trending","paper":"Paper"};
+  const ORDER_UGC = ["ugc-multishot","ugc-product-application","ugc-influencer","ugc-5in1-v4","ugc-hair-specialist","ugc-realism-voice"];
+  const ORDER_AE  = ["bugzy-vertical","realestate","airbnb","story"];
+  const WORDS = {"ugc-multishot":"Wellness","ugc-product-application":"Skincare","ugc-5in1-v4":"Pet food","ugc-influencer":"Supplements","ugc-hair-specialist":"Haircare","ugc-realism-voice":"Realism","realestate":"Property","airbnb":"Airbnb","story":"Story","bugzy-vertical":"Bugzy"};
 
   class Carousel {
     constructor(root, keys, startKey){
@@ -537,7 +650,7 @@
       const L = this.items.length, step = 0.78, mob = innerWidth < 860;
       this.cards.forEach((el, idx) => {
         let d = idx - this.i; if (d > L/2) d -= L; if (d < -L/2) d += L;
-        const a = Math.abs(d); const vis = mob ? 1 : 2;
+        const a = Math.abs(d); const vis = mob || L < 5 ? 1 : 2;
         const x = d * step * (a === 1 ? 1 : 1.04) * 100;          // percent of card width
         const sc = a === 0 ? 1 : a === 1 ? 0.8 : 0.64;
         el.style.transform = `translateX(${x}%) scale(${sc})`;
@@ -551,7 +664,7 @@
       window.pickPlay && window.pickPlay();
     }
   }
-  const carU = new Carousel(document.getElementById("carUgc"), ORDER_UGC, "ugc-multishot");
+  const carU = new Carousel(document.getElementById("carUgc"), ORDER_UGC, "ugc-influencer");
   const carA = new Carousel(document.getElementById("carAe"), ORDER_AE, "bugzy-vertical");
   addEventListener("resize", () => { carU.update(); carA.update(); });
 
@@ -607,11 +720,29 @@
       ? `<video src="${c.src}" controls autoplay playsinline ${c.poster?`poster="${c.poster}"`:""}></video>`
       : `<div class="phbig">${c.t} <br><small>Video coming soon</small></div>`;
     box.insertAdjacentHTML("beforeend", `<div class="cap"><span>${c.t} — ${c.s}</span><span>${c.r}</span></div>`);
-    document.querySelectorAll(".card video").forEach(v => v.pause());
+    document.querySelectorAll(".card video, .rc video").forEach(v => v.pause());
     lb.setAttribute("open",""); document.body.style.overflow = "hidden";
     document.getElementById("lbx").focus();
   }
-  function closeLB(){ lb.removeAttribute("open"); box.innerHTML = ""; document.body.style.overflow = ""; last && last.focus(); window.pickPlay && window.pickPlay(); }
+  function closeLB(){ lb.removeAttribute("open"); box.innerHTML = ""; document.body.style.overflow = ""; last && last.focus(); window.pickPlay && window.pickPlay(); reelSync(); }
+
+  // hero loops: short silent clips that autoplay while on screen; click opens the full ad with sound
+  const reelVids = [...document.querySelectorAll(".rc video")];
+  const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let reelSeen = true;
+  function reelSync(){ reelVids.forEach(v => { if (reelSeen && !REDUCE && !lbOpen()) v.play().catch(()=>{}); else v.pause(); }); }
+  document.querySelectorAll(".rc").forEach(el => el.addEventListener("click", () => openLB(byK[el.dataset.k])));
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(es => { reelSeen = es.some(e => e.isIntersecting); reelSync(); }).observe(document.querySelector(".reel"));
+  }
+  reelSync();
+
+  // quote buttons: open an email with a short brief template
+  const MAIL = "muhammadwaqasasif994@gmail.com";
+  const BRIEF = "Hi Waqas,\n\nBrand / product:\nWhere the video will run:\nNumber of videos:\nDeadline:\nReference links:\n";
+  document.querySelectorAll("[data-quote]").forEach(a => {
+    a.href = `mailto:${MAIL}?subject=${encodeURIComponent("Quote request: " + a.dataset.quote)}&body=${encodeURIComponent(BRIEF)}`;
+  });
   document.getElementById("lbx").addEventListener("click", closeLB);
   lb.addEventListener("click", e => { if (e.target === lb) closeLB(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && lb.hasAttribute("open")) closeLB(); });
