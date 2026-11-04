@@ -68,6 +68,14 @@
   .chip.ai{background:var(--red);color:#fff;top:calc(var(--h)*2.05);left:calc(var(--h)*4.6);transform:rotate(6deg)}
   @media(max-width:860px){.hero h1{white-space:normal;--h:clamp(40px,11vw,64px)}.chip.pr{left:auto;right:0;top:calc(var(--h)*-.35)}.chip.ae{left:auto;right:calc(var(--h)*-.15);top:calc(var(--h)*1.05)}.chip.ai{left:auto;right:calc(var(--h)*.3);top:calc(var(--h)*2.25)}}
   .hero .cta{margin-top:clamp(22px,3vw,34px);display:flex;gap:12px;flex-wrap:wrap}
+  @media(max-width:560px){
+    .hero .cta{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .hero .cta .pill{justify-content:center;padding:13px 14px;font-size:14px}
+    .hero .cta .pill:first-child{grid-column:1/-1;padding-right:8px}
+    .hero .cta .lg{display:none}
+  }
+  .hero .cta .sm{display:none}
+  @media(max-width:560px){.hero .cta .sm{display:inline}}
   .side{display:grid;gap:18px;align-content:end;padding-bottom:8px}
   .trusted{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted)}
   .avs{display:flex}
@@ -226,7 +234,8 @@
       </h1>
       <div class="cta">
         <a class="pill" href="#work">See the work <i><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg></i></a>
-        <a class="pill dark" href="Muhammad_Waqas_Asif_Resume.pdf" download>Download résumé</a>
+        <a class="pill dark" href="#contact">Contact me</a>
+        <a class="pill dark" href="Muhammad_Waqas_Asif_Resume.pdf" download><span class="lg">Download résumé</span><span class="sm">Résumé (PDF)</span></a>
       </div>
     </div>
     <aside class="side">
