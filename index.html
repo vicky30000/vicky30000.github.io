@@ -49,10 +49,7 @@
 
   /* hero */
   .hero{position:relative;margin:0 var(--g);border-radius:var(--r);overflow:hidden;isolation:isolate;background:linear-gradient(180deg,#FFFFFF 0%,#FFF1F4 55%,#FFE3EA 100%);border:1px solid rgba(229,23,63,.12)}
-  .stage{position:relative;height:clamp(600px,calc(100vh - 110px),860px);overflow:hidden}
-  .cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:0;pointer-events:none}
-  .cols i{border-left:1px dashed rgba(229,23,63,.16)}
-  .cols i:first-child{border-left:0}
+  .stage{--H:clamp(600px,calc(100vh - 110px),860px);position:relative;height:var(--H);overflow:hidden}
   .glow{position:absolute;left:50%;bottom:0;width:min(980px,82%);height:96%;transform:translateX(-50%);z-index:0;filter:blur(34px)}
   .glow i{position:absolute;border-radius:50%}
   .glow i:nth-child(1){left:22%;top:16%;width:56%;height:80%;background:radial-gradient(closest-side,rgba(255,77,106,.55),rgba(255,77,106,0));animation:smk1 14s ease-in-out infinite alternate}
@@ -64,8 +61,8 @@
   .intro{position:absolute;top:clamp(28px,4vw,52px);left:clamp(24px,4vw,56px);z-index:3;font-size:clamp(18px,1.9vw,28px);line-height:1.02;font-variation-settings:"wdth" 70,"wght" 850;text-transform:uppercase;letter-spacing:.005em;color:var(--ink)}
   .intro em{font-style:normal;color:#fff;background:var(--red);padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
   .name{position:absolute;left:50%;bottom:clamp(10px,2.4vw,34px);transform:translateX(-50%);z-index:2;text-align:left;text-transform:uppercase;pointer-events:none;line-height:.8}
-  .name .first{display:block;font-size:clamp(30px,4.4vw,66px);font-variation-settings:"wdth" 62,"wght" 850;letter-spacing:.005em;margin:0 0 .06em .04em;color:var(--ink);text-shadow:0 2px 14px rgba(255,255,255,.7)}
-  .name .last{display:block;font-size:clamp(120px,21vw,320px);font-variation-settings:"wdth" 62,"wght" 900;letter-spacing:-.01em;color:var(--red);text-shadow:0 6px 30px rgba(255,255,255,.45)}
+  .name .first{display:block;font-size:clamp(28px,3.8vw,56px);font-variation-settings:"wdth" 62,"wght" 850;letter-spacing:.005em;margin:0 0 .06em .04em;color:var(--ink);text-shadow:0 2px 14px rgba(255,255,255,.7)}
+  .name .last{display:block;font-size:max(110px,min(18vw,calc(var(--H) * .46 - 70px),280px));font-variation-settings:"wdth" 62,"wght" 900;letter-spacing:-.01em;color:var(--red);text-shadow:0 6px 30px rgba(255,255,255,.45)}
   .hero .cta{margin-top:clamp(22px,3vw,34px);display:flex;gap:12px;flex-wrap:wrap}
   .hero .cta .sm{display:none}
   .hero .acts{position:absolute;top:clamp(28px,4vw,52px);right:clamp(24px,4vw,56px);z-index:3;margin:0;flex-direction:column;align-items:stretch;width:clamp(190px,16vw,220px)}
@@ -102,7 +99,6 @@
     .intro,.hero .acts{position:static}
     .intro{order:1}
     .glow{top:90px;bottom:auto;height:72%;width:120%}
-    .cols{grid-template-columns:repeat(2,1fr)}
     .me{position:relative;left:auto;bottom:auto;transform:none;order:2;height:auto;width:min(100%,560px);align-self:center;margin-top:10px}
     .name{position:relative;order:3;left:auto;bottom:auto;transform:none;align-self:center;margin-top:-26%;padding-bottom:4px}
     .hero .acts{order:4;width:auto;flex-direction:row;flex-wrap:wrap;margin:18px 0 26px}
@@ -304,7 +300,6 @@
 <section class="hero" style="padding:0">
   <div class="silk" aria-hidden="true"></div>
   <div class="stage">
-    <div class="cols" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <div class="glow" aria-hidden="true"><i></i><i></i><i></i></div>
     <img class="me" src="img/waqas-hero.webp" alt="Muhammad Waqas Asif" width="1000" height="940" fetchpriority="high">
     <p class="intro">Short-form ads <br>that stop <br><em>the scroll.</em></p>
