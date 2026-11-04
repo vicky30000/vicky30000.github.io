@@ -86,19 +86,39 @@
   .badges{display:flex;gap:10px;flex-wrap:wrap}
   .badge{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.25)}
   .badge small{display:block;font-weight:500;letter-spacing:0;text-transform:none;color:var(--muted);font-size:11px}
-  .hero-rows{display:grid;gap:26px;padding:0 clamp(24px,5vw,72px) clamp(24px,5vw,72px)}
-  .row-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-  .row-head .tag{color:var(--white)}
-  .row-head a{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
-  .row-head a:hover{color:var(--white)}
-  .hero-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .hero-rows{display:grid;gap:clamp(28px,4vw,48px);padding:0 clamp(16px,4vw,64px) clamp(28px,5vw,64px)}
+  .car{--w:clamp(190px,21vw,270px);--gap:18px;outline:none;position:relative}
+  .car:focus-visible{outline:2px solid var(--red2);outline-offset:6px;border-radius:12px}
+  .car-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 0 10px;border-bottom:1px solid var(--line);margin:0 auto 18px;max-width:calc(var(--w)*3.4)}
+  .car-title{font-size:clamp(18px,1.8vw,24px);font-variation-settings:"wdth" 88,"wght" 600;letter-spacing:-.01em}
+  .car-count{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .car-count b{color:var(--white);font-size:18px}
+  .car-stage{position:relative;height:calc(var(--w)*16/9);overflow:hidden}
+  .car-track{position:absolute;inset:0}
+  .car-track .card{position:absolute;left:50%;top:50%;width:var(--w);margin:calc(var(--w)*-8/9) 0 0 calc(var(--w)/-2);aspect-ratio:9/16;transition:transform .55s cubic-bezier(.22,.8,.26,1),opacity .45s,filter .45s;will-change:transform;border-color:rgba(255,255,255,.12)}
+  .car-track .card:not(.is-active){filter:saturate(.85) brightness(.75)}
+  .car-track .card.is-active{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.18)}
+  .car-track .card .lbl{opacity:0;transition:opacity .3s}
+  .car-track .card.is-active .lbl{opacity:1}
+  .car-track .card .word{position:absolute;left:0;right:0;bottom:62px;text-align:center;font-size:clamp(24px,2.9vw,40px);font-variation-settings:"wdth" 70,"wght" 800;text-transform:uppercase;line-height:1;color:rgba(255,255,255,.92);text-shadow:0 6px 30px rgba(0,0,0,.6);letter-spacing:-.01em;pointer-events:none;transition:opacity .3s}
+  .car-track .card:not(.is-active) .word{bottom:50%;transform:translateY(50%);opacity:.9}
+  .car-btn{position:absolute;top:50%;z-index:20;width:44px;height:44px;margin-top:-22px;border-radius:50%;background:rgba(11,6,8,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);display:grid;place-items:center;color:var(--white)}
+  .car-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .car-btn:hover{background:var(--white);color:var(--black)}
+  .car-btn.prev{left:max(0px,calc(50% - var(--w)*1.55))}
+  .car-btn.next{right:max(0px,calc(50% - var(--w)*1.55))}
+  .car-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
+  .car-dots button{width:10px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);transition:width .3s,background .3s;padding:0}
+  .car-dots button[aria-selected="true"]{width:34px;background:var(--white)}
   @media(max-width:860px){
     .hero-in{grid-template-columns:1fr;gap:28px}
-    .hero-rows{padding:0 16px 16px;gap:20px}
-    .hero-cards{gap:8px}
+    .hero-rows{padding:0 12px 20px;gap:28px}
+    .car{--w:clamp(170px,46vw,230px)}
+    .car-head{max-width:none}
+    .car-btn{width:38px;height:38px;margin-top:-19px}
+    .car-track .card.is-active .word{display:none}
   }
-  @media(max-width:560px){.hero-cards{grid-template-columns:1fr 1fr}}
-
+  @media(prefers-reduced-motion:reduce){.car-track .card{transition:none}}
   /* cards */
   .card{position:relative;border-radius:12px;overflow:hidden;background:var(--card);aspect-ratio:9/13;cursor:pointer;border:1px solid var(--line);text-align:left;padding:0;width:100%;display:block}
   .card.wide{aspect-ratio:16/10}
@@ -252,13 +272,23 @@
     </aside>
   </div>
   <div class="hero-rows">
-    <div class="hero-row">
-      <div class="row-head"><span class="tag">AI UGC ads</span><a href="#work" data-jump="ugc">See all</a></div>
-      <div class="hero-cards" id="heroUgc"></div>
+    <div class="car" id="carUgc" tabindex="0" aria-roledescription="carousel" aria-label="AI UGC ads">
+      <div class="car-head"><span class="car-title">AI UGC ads</span><span class="car-count"><b>01</b>/<span>00</span></span></div>
+      <div class="car-stage">
+        <button class="car-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="car-track"></div>
+        <button class="car-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="car-dots" role="tablist"></div>
     </div>
-    <div class="hero-row">
-      <div class="row-head"><span class="tag">After Effects edits</span><a href="#work" data-jump="motion">See all</a></div>
-      <div class="hero-cards" id="heroAe"></div>
+    <div class="car" id="carAe" tabindex="0" aria-roledescription="carousel" aria-label="After Effects edits">
+      <div class="car-head"><span class="car-title">After Effects edits</span><span class="car-count"><b>01</b>/<span>00</span></span></div>
+      <div class="car-stage">
+        <button class="car-btn prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="car-track"></div>
+        <button class="car-btn next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="car-dots" role="tablist"></div>
     </div>
   </div>
 </section>
@@ -421,13 +451,57 @@
   CLIPS.forEach(c => grid.appendChild(card(c)));
   grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work<br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
   const byK = Object.fromEntries(CLIPS.map(c => [c.k, c]));
-  const HERO_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4"];
-  const HERO_AE  = ["realestate","airbnb","story","bugzy-vertical"];
-  HERO_UGC.forEach(k => document.getElementById("heroUgc").appendChild(card(byK[k], false)));
-  HERO_AE.forEach(k => document.getElementById("heroAe").appendChild(card(byK[k], false)));
-  document.querySelectorAll("[data-jump]").forEach(a => a.addEventListener("click", () => {
-    const b = document.querySelector(`.chipb[data-f="${a.dataset.jump}"]`); b && b.click();
-  }));
+  const ORDER_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4","ugc-influencer","ugc-hair-specialist","ugc-realism-voice","ugc-voiceover","ugc-story-characters"];
+  const ORDER_AE  = ["realestate","airbnb","story","bugzy-vertical","trending","paper"];
+  const WORDS = {"ugc-multishot":"Consistent","ugc-product-application":"Skincare","ugc-5in1-v1":"Origins","ugc-5in1-v4":"Origins","ugc-influencer":"Influencer","ugc-hair-specialist":"Haircare","ugc-realism-voice":"Realism","ugc-voiceover":"Voice","ugc-story-characters":"Story","realestate":"Property","airbnb":"Airbnb","story":"Story","bugzy-vertical":"Bugzy","trending":"Trending","paper":"Paper"};
+
+  class Carousel {
+    constructor(root, keys){
+      this.root = root; this.items = keys.map(k => byK[k]); this.i = 0;
+      this.track = root.querySelector(".car-track"); this.dots = root.querySelector(".car-dots");
+      this.countB = root.querySelector(".car-count b"); this.countN = root.querySelector(".car-count span");
+      this.countN.textContent = String(this.items.length).padStart(2,"0");
+      this.cards = this.items.map((c, idx) => {
+        const el = card(c, false);
+        el.insertAdjacentHTML("beforeend", `<span class="word" aria-hidden="true">${WORDS[c.k] || ""}</span>`);
+        // replace default click: side cards focus, center card opens
+        const clone = el.cloneNode(true); el.replaceWith(clone);
+        clone.addEventListener("click", () => idx === this.i ? openLB(c) : this.go(idx));
+        this.track.appendChild(clone); return clone;
+      });
+      this.items.forEach((_, idx) => {
+        const d = document.createElement("button"); d.type = "button"; d.setAttribute("role","tab");
+        d.setAttribute("aria-label", "Go to " + (idx+1)); d.addEventListener("click", () => this.go(idx)); this.dots.appendChild(d);
+      });
+      root.querySelector(".prev").addEventListener("click", () => this.go(this.i - 1));
+      root.querySelector(".next").addEventListener("click", () => this.go(this.i + 1));
+      root.addEventListener("keydown", e => { if (e.key === "ArrowLeft") this.go(this.i-1); if (e.key === "ArrowRight") this.go(this.i+1); });
+      let x0 = null;
+      this.track.addEventListener("pointerdown", e => { x0 = e.clientX; });
+      this.track.addEventListener("pointerup", e => { if (x0 === null) return; const dx = e.clientX - x0; x0 = null; if (Math.abs(dx) > 40) this.go(this.i + (dx < 0 ? 1 : -1)); });
+      this.update();
+    }
+    go(n){ const L = this.items.length; this.i = ((n % L) + L) % L; this.update(); }
+    update(){
+      const L = this.items.length, step = 0.78, mob = innerWidth < 860;
+      this.cards.forEach((el, idx) => {
+        let d = idx - this.i; if (d > L/2) d -= L; if (d < -L/2) d += L;
+        const a = Math.abs(d); const vis = mob ? 1 : 2;
+        const x = d * step * (a === 1 ? 1 : 1.04) * 100;          // percent of card width
+        const sc = a === 0 ? 1 : a === 1 ? 0.8 : 0.64;
+        el.style.transform = `translateX(${x}%) scale(${sc})`;
+        el.style.opacity = a > vis ? 0 : a === 0 ? 1 : a === 1 ? .95 : .55;
+        el.style.zIndex = 10 - a; el.style.pointerEvents = a > vis ? "none" : "";
+        el.classList.toggle("is-active", a === 0);
+        const v = el.querySelector("video"); if (v){ if (a === 0){ v.play().catch(()=>{}); } else { v.pause(); } }
+      });
+      [...this.dots.children].forEach((d, idx) => d.setAttribute("aria-selected", idx === this.i));
+      this.countB.textContent = String(this.i + 1).padStart(2,"0");
+    }
+  }
+  const carU = new Carousel(document.getElementById("carUgc"), ORDER_UGC);
+  const carA = new Carousel(document.getElementById("carAe"), ORDER_AE);
+  addEventListener("resize", () => { carU.update(); carA.update(); });
 
   // filters
   const chips = [...document.querySelectorAll(".chipb")];
