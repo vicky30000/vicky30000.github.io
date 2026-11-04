@@ -107,9 +107,11 @@
   .car-btn:hover{background:var(--white);color:var(--black)}
   .car-btn.prev{left:max(0px,calc(50% - var(--w)*1.55))}
   .car-btn.next{right:max(0px,calc(50% - var(--w)*1.55))}
-  .car-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
-  .car-dots button{width:10px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);transition:width .3s,background .3s;padding:0}
-  .car-dots button[aria-selected="true"]{width:34px;background:var(--white)}
+  .car-dots{display:flex;justify-content:center;gap:2px;margin-top:8px}
+  .car-dots button{position:relative;width:14px;height:24px;padding:0;transition:width .3s}
+  .car-dots button::before{content:"";position:absolute;left:2px;right:2px;top:10px;height:4px;border-radius:2px;background:rgba(255,255,255,.25);transition:background .3s}
+  .car-dots button[aria-selected="true"]{width:38px}
+  .car-dots button[aria-selected="true"]::before{background:var(--white)}
   @media(max-width:860px){
     .hero-in{grid-template-columns:1fr;gap:28px}
     .hero-rows{padding:0 12px 20px;gap:28px}
@@ -151,7 +153,7 @@
   .photo .fl{position:absolute;padding:10px 14px;border-radius:12px;font-weight:800;font-size:14px;box-shadow:0 14px 40px rgba(0,0,0,.5)}
   .photo .fl.a{left:-14px;top:9%;background:#00005B;color:#9999FF;transform:rotate(-8deg)}
   .photo .fl.b{right:-14px;top:22%;background:#1F0050;color:#9999FF;transform:rotate(7deg)}
-  .photo .fl.c{right:-18px;bottom:26%;background:var(--red);color:#fff;transform:rotate(-5deg)}
+  .photo .fl.c{right:-10px;bottom:26%;background:var(--red);color:#fff;transform:rotate(-5deg)}
   .photo .fl.n8{left:-12px;bottom:14%;background:#fff;color:#000;transform:rotate(5deg)}
   .photo .tl{position:absolute;left:16px;right:16px;bottom:16px;height:22px;display:grid;grid-template-columns:3fr 2fr 4fr 1fr 2fr;gap:4px;opacity:.95}
   .photo .tl i{border-radius:4px;background:linear-gradient(180deg,#8a2240,#4a0b1b);border:1px solid rgba(255,255,255,.2)}
@@ -226,6 +228,66 @@
   .lb .x{position:fixed;top:18px;right:18px;background:var(--white);color:var(--black);font-weight:700;font-size:13px;padding:10px 16px;border-radius:999px}
   .lb .phbig{width:min(90vw,720px);aspect-ratio:9/16;max-height:80vh;border-radius:12px;display:grid;place-items:center;text-align:center;color:var(--muted);padding:24px;background:linear-gradient(160deg,#4a0b1b,#160a0e)}
 
+
+  /* ===== phones ===== */
+  @media(max-width:560px){
+    section{padding:56px 16px}
+    .hero{margin:0 10px}
+    .hero-in{padding:44px 20px 24px}
+    .hero h1 .chip{display:none}
+    .hero h1{--h:clamp(38px,11.5vw,56px)}
+    .side{gap:14px}
+    h2{font-size:clamp(28px,8.4vw,40px)}
+    h2 br{display:none}
+    .contact h2 br{display:inline}
+    .head{margin-bottom:22px}
+
+    /* carousels */
+    .car{--w:min(60vw,240px)}
+    .car-track .card .word{display:none}
+    .car-track .card .lbl{padding:36px 10px 10px}
+    .car-track .card .lbl b{font-size:13px}
+    .car-track .card .lbl .txt small{font-size:11px}
+    .car-track .card .ratio{display:none}
+    .car-btn{width:34px;height:34px;margin-top:-17px}
+    .car-btn.prev{left:2px}.car-btn.next{right:2px}
+    .car-title{font-size:17px}
+
+    /* work grid */
+    .filters{flex-wrap:nowrap;overflow-x:auto;margin:0 -16px;padding:0 16px 4px;scrollbar-width:none}
+    .filters::-webkit-scrollbar{display:none}
+    .chipb{flex:none}
+    .grid .card .ratio{display:none}
+    .grid .card .cat{font-size:10px;padding:4px 7px;top:8px;right:8px}
+    .grid .card .lbl{padding:30px 10px 10px;gap:6px}
+    .grid .card .lbl b{font-size:12.5px;line-height:1.2}
+    .grid .card .lbl .txt small{font-size:11px}
+    .grid .card .play{width:26px;height:26px}
+    .grid .card .play svg{width:9px;height:9px}
+    .grid .card.more{grid-column:auto;aspect-ratio:9/13;padding:14px}
+    .grid .card.more b{font-size:19px}
+    .grid .card.more small{font-size:11px}
+    .grid .card.more .pill{font-size:12px;padding:8px 6px 8px 12px;margin-top:12px}
+    .grid .card.more .pill i{width:22px;height:22px}
+
+    /* about */
+    .photo{max-width:none;margin:0 6px}
+    .photo .fl{font-size:12px;padding:8px 11px}
+    .photo .fl.a{left:-6px}.photo .fl.b{right:-6px}.photo .fl.c{right:-6px}.photo .fl.n8{left:-6px}
+    .bio p.big{font-size:clamp(22px,6.6vw,30px)}
+
+    /* services + stats */
+    .svc .row{grid-template-columns:36px 1fr;padding:22px 0}
+    .stat{padding:20px 16px}
+    .stat span{letter-spacing:.03em;font-size:12px}
+
+    /* contact */
+    .contact{margin:16px 10px 16px;padding:40px 20px}
+    .contact h2{font-size:clamp(40px,13vw,64px)}
+    .contact-cta{display:grid;grid-template-columns:1fr;gap:10px}
+    .contact-cta .pill{justify-content:center;width:100%}
+    footer{flex-direction:column;gap:6px;padding:0 16px 28px}
+  }
   @media(prefers-reduced-motion:reduce){.hero .silk,.marq .t{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
@@ -247,7 +309,7 @@
   <div class="silk" aria-hidden="true"></div>
   <div class="hero-in">
     <div>
-      <h1 class="d">Short-form<br>video editing<br>that sells
+      <h1 class="d">Short-form <br>video editing <br>that sells
         <span class="chip pr" aria-hidden="true">Pr</span>
         <span class="chip ae" aria-hidden="true">Ae</span>
         <span class="chip ai" aria-hidden="true">AI</span>
@@ -304,7 +366,7 @@
       <div class="bio">
         <span class="tag">About me</span>
         <p class="big">Great editing isn't cutting clips together. It's <em>rhythm, emotion, and clarity</em> that make people stop scrolling.</p>
-        <p class="txt">I'm Waqas — a video editor from Rahim Yar Khan, Pakistan, working remotely with DTC brands and agencies since 2024. I cut short-form ads in Premiere Pro, build motion in After Effects, and generate AI UGC with custom ComfyUI workflows so one concept can become a dozen variations.</p>
+        <p class="txt">I'm Waqas — a video editor working remotely with DTC brands and agencies since 2024. I cut short-form ads in Premiere Pro, build motion in After Effects, and generate AI UGC with custom ComfyUI workflows so one concept can become a dozen variations.</p>
         <p class="txt">Open to full-time and freelance editing roles.</p>
         <div class="cta"><a class="pill" href="#contact">Work with me <i><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg></i></a></div>
       </div>
@@ -317,7 +379,7 @@
     <div class="head">
       <div>
         <span class="tag">Selected work</span>
-        <h2 class="d" style="margin-top:12px">Stories I've<br>brought to life</h2>
+        <h2 class="d" style="margin-top:12px">Stories I've <br>brought to life</h2>
       </div>
       <div class="filters" role="group" aria-label="Filter">
         <button class="chipb" aria-pressed="true" data-f="all">All</button>
@@ -333,7 +395,7 @@
 <section class="services" id="services">
   <div class="wrap">
     <span class="tag">Services</span>
-    <h2 class="d" style="margin:12px 0 30px">Everything you need<br>to sell with video</h2>
+    <h2 class="d" style="margin:12px 0 30px">Everything you need <br>to sell with video</h2>
     <div class="svc">
       <div class="row">
         <span class="n">01</span>
@@ -370,7 +432,7 @@
 
 <section class="contact" id="contact" style="margin-top:var(--g)">
   <span class="tag">Get in touch</span>
-  <h2 class="d" style="margin-top:14px">Let's make<br>something</h2>
+  <h2 class="d" style="margin-top:14px">Let's make <br>something</h2>
   <p class="sub" style="margin-top:14px">Open to full-time and freelance editing roles. Send a brief or just say hi.</p>
   <div class="cta contact-cta">
     <a class="pill wa" href="https://wa.me/923134390172?text=Hi%20Waqas%2C%20I%20saw%20your%20portfolio%20and%20want%20to%20talk%20about%20a%20project." target="_blank" rel="noopener">
@@ -391,7 +453,7 @@
 
 <footer>
   <span>© <span id="yr"></span> Muhammad Waqas Asif</span>
-  <span>Rahim Yar Khan, Pakistan · Remote worldwide</span>
+  <span>Available remotely, worldwide</span>
 </footer>
 
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
@@ -449,7 +511,7 @@
 
   const grid = document.getElementById("grid");
   CLIPS.forEach(c => grid.appendChild(card(c)));
-  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work<br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
+  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work <br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
   const byK = Object.fromEntries(CLIPS.map(c => [c.k, c]));
   const ORDER_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4","ugc-influencer","ugc-hair-specialist","ugc-realism-voice","ugc-voiceover","ugc-story-characters"];
   const ORDER_AE  = ["realestate","airbnb","story","bugzy-vertical","trending","paper"];
@@ -517,7 +579,7 @@
     last = document.activeElement;
     box.innerHTML = c.src
       ? `<video src="${c.src}" controls autoplay playsinline ${c.poster?`poster="${c.poster}"`:""}></video>`
-      : `<div class="phbig">${c.t}<br><small>Video coming soon</small></div>`;
+      : `<div class="phbig">${c.t} <br><small>Video coming soon</small></div>`;
     box.insertAdjacentHTML("beforeend", `<div class="cap"><span>${c.t} — ${c.s}</span><span>${c.r}</span></div>`);
     lb.setAttribute("open",""); document.body.style.overflow = "hidden";
     document.getElementById("lbx").focus();
