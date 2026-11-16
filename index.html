@@ -426,10 +426,6 @@
   </div>
 </section>
 
-<div class="marq" aria-label="Brands">
-  <div class="t" id="marq"></div>
-</div>
-
 <section class="contact" id="contact" style="margin-top:var(--g)">
   <span class="tag">Get in touch</span>
   <h2 class="d" style="margin-top:14px">Let's make <br>something</h2>
@@ -442,7 +438,7 @@
   </div>
   <div class="row">
     <span><a href="Muhammad_Waqas_Asif_Resume.pdf" download>Résumé (PDF)</a></span>
-    <span><a href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener">Full portfolio on Drive</a></span>
+    <span>More samples on request</span>
   </div>
 </section>
 </main>
@@ -507,7 +503,7 @@
 
   const grid = document.getElementById("grid");
   CLIPS.forEach(c => grid.appendChild(card(c)));
-  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="https://drive.google.com/drive/folders/1G7-LBrNptSrxgVIdZhNGK4GwV2xEXorT?usp=sharing" target="_blank" rel="noopener"><span><b>More work <br>on Google Drive</b><small>Full-resolution originals and extra cuts</small><span class="pill">Open folder <i>${PLAY}</i></span></span></a>`);
+  grid.insertAdjacentHTML("beforeend", `<a class="card more" href="#contact"><span><b>More work <br>on request</b><small>Ask and I'll send samples that fit your brand</small><span class="pill">Contact me <i>${PLAY}</i></span></span></a>`);
   const byK = Object.fromEntries(CLIPS.map(c => [c.k, c]));
   const ORDER_UGC = ["ugc-multishot","ugc-product-application","ugc-5in1-v1","ugc-5in1-v4","ugc-influencer","ugc-hair-specialist","ugc-realism-voice","ugc-voiceover","ugc-story-characters"];
   const ORDER_AE  = ["realestate","airbnb","story","bugzy-vertical","trending","paper"];
@@ -585,10 +581,6 @@
   lb.addEventListener("click", e => { if (e.target === lb) closeLB(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && lb.hasAttribute("open")) closeLB(); });
 
-  // brands marquee
-  const BRANDS = [["Mindstream","https://www.mindstream.news/"],["Pattern Wellness","https://patternwellness.com/"],["Avera","https://averastore.co/"],["Qure Skincare","https://qureskincare.com/"],["Scentstop","https://scentstop.com.au/"],["Marieke & Juul","https://mariekejuul.nl/"],["Men's Best Basics","https://mensbestbasics.com/"],["Aurix Productions","https://www.instagram.com/aurixproductions/"],["Pixated","https://pixated.agency/"]];
-  const m = document.getElementById("marq");
-  m.innerHTML = [...BRANDS, ...BRANDS].map(([n,u]) => `<a href="${u}" target="_blank" rel="noopener">${n}</a>`).join("");
   document.getElementById("yr").textContent = new Date().getFullYear();
 </script>
 </body>
